@@ -6,7 +6,7 @@
     </h1>
     <ul>
       <li>
-        <nuxt-link :to="{ name: 'index-date-news', params: { date: 'does-not-matter', news: 0 }}" style="color: blue;">My news post</nuxt-link>
+        <nuxt-link :to="{ name: 'index-date-news', params: { date: 'does-not-matter', news: 1 }}" style="color: blue;">My news post</nuxt-link>
       </li>
     </ul>
     <nuxt-child :key="$route.fullPath" />

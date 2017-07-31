@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>{{ page.header }}</p>
+    <h3>{{ page.name }}</h3>
     <p v-if="page.isLive" style="color: green;"><b>post is live</b></p>
     <nuxt-link :to="{ name: 'index' }" style="color: blue;">Back to news list</nuxt-link>
   </div>
@@ -12,7 +12,7 @@
     mixins: [Page.mixins],
     asyncData (ctx) {
       return Page.async(ctx, {
-        id: 1
+        id: ctx.params.news
       })
     }
   }

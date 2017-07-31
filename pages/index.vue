@@ -2,32 +2,31 @@
   <section class="container">
     <img src="~assets/img/logo.png" alt="Nuxt.js Logo" class="logo" />
     <h1 class="title">
-      Home Page - Pages Below:
+      {{ page.header }}
     </h1>
-    <ul class="users">
-      <li v-for="(page, index) in pages" :key="index" class="user">
-        <nuxt-link :to="{ name: 'page-index', params: { page: index }}">
-          {{ page.linkLabel }}
-        </nuxt-link>
+    <ul>
+      <li>
+        <nuxt-link :to="{ name: 'index-news', params: { news: 0 }}" style="color: blue;">My news post</nuxt-link>
       </li>
     </ul>
+    <nuxt-child />
   </section>
 </template>
 
 <script>
-import axios from '~/plugins/axios'
-
-export default {
-  async asyncData () {
-    let { data } = await axios.get('/api/pages')
-    return { pages: data }
-  },
-  head () {
-    return {
-      title: 'Home'
+  import Page from '~/plugins/page'
+  export default {
+    mixins: [Page.mixins],
+    asyncData (ctx) {
+      return Page.async(ctx, {
+        id: 0,
+        page: {
+          header: 'News',
+          isLive: true
+        }
+      })
     }
   }
-}
 </script>
 
 <style scoped>

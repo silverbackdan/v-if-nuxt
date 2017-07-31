@@ -8,19 +8,20 @@ export default {
       }
     }
   },
-  async ({ store, app }, { id }) {
-    console.log('page init start', id)
+  async ({ store }, { id }) {
     return axios.get('/api/page/' + id)
       .then((res) => {
         store.commit('initPage', {
           id: id,
           page: res.data
         })
-        console.log('page init resolve', id)
-        return {
-          id: id
-        }
+        // Force the first (top level) page to be resolved AFTER the child
+        // Causes an error on SSR
+        return new Promise(resolve => setTimeout(() => {
+          resolve({
+            id: id
+          })
+        }, id === 0 ? 500 : 0))
       })
   }
 }
-// new Promise(resolve => setTimeout(() => {}, 1000))

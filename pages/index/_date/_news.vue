@@ -12,11 +12,7 @@
     mixins: [Page.mixins],
     asyncData (ctx) {
       return Page.async(ctx, {
-        id: 1,
-        page: {
-          header: 'news post header',
-          isLive: true
-        }
+        id: 1
       })
     }
   }

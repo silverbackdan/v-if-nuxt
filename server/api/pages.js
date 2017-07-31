@@ -5,24 +5,11 @@ const router = Router()
 // Mock Users
 const pages = [
   {
-    name: 'A top level page',
-    linkLabel: 'Page 1',
-    children: [
-      {
-        name: 'A sub page 1 (live)',
-        linkLabel: 'Sub Page 1',
-        isLive: true
-      },
-      {
-        name: 'A sub page 2 (draft)',
-        linkLabel: 'Sub Page 2',
-        isLive: false
-      }
-    ]
+    name: 'A top level page'
   },
   {
     name: 'Another top level page',
-    linkLabel: 'Page 2'
+    isLive: true
   }
 ]
 

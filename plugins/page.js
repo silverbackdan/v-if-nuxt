@@ -1,3 +1,5 @@
+import axios from '~/plugins/axios'
+
 export default {
   mixins: {
     computed: {
@@ -6,13 +8,16 @@ export default {
       }
     }
   },
-  async ({ store }, { page, id }) {
-    store.commit('initPage', {
-      id: id,
-      page: page
-    })
-    return {
-      id: id
-    }
+  async ({ store }, { id }) {
+    return axios.get('/api/page/' + id)
+      .then((res) => {
+        store.commit('initPage', {
+          id: id,
+          page: res.data
+        })
+        return {
+          id: id
+        }
+      })
   }
 }

@@ -2,14 +2,14 @@
   <section class="container">
     <img src="~assets/img/logo.png" alt="Nuxt.js Logo" class="logo" />
     <h1 class="title">
-      {{ page.header }}
+      {{ page.name }}
     </h1>
     <ul>
       <li>
-        <nuxt-link :to="{ name: 'index-news', params: { news: 0 }}" style="color: blue;">My news post</nuxt-link>
+        <nuxt-link :to="{ name: 'index-date-news', params: { date: 'does-not-matter', news: 0 }}" style="color: blue;">My news post</nuxt-link>
       </li>
     </ul>
-    <nuxt-child />
+    <nuxt-child :key="$route.fullPath" />
   </section>
 </template>
 
@@ -19,11 +19,7 @@
     mixins: [Page.mixins],
     asyncData (ctx) {
       return Page.async(ctx, {
-        id: 0,
-        page: {
-          header: 'News',
-          isLive: true
-        }
+        id: 0
       })
     }
   }

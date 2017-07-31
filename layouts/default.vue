@@ -1,19 +1,6 @@
 <template>
-  <div>
-    <nuxt/>
-    <my-footer/>
-  </div>
+  <nuxt/>
 </template>
-
-<script>
-import MyFooter from '~/components/Footer.vue'
-
-export default {
-  components: {
-    MyFooter
-  }
-}
-</script>
 
 <style>
 .container

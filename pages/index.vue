@@ -16,10 +16,12 @@
 <script>
   import Page from '~/plugins/page'
   export default {
-    mixins: [Page.mixins],
     asyncData (ctx) {
       return Page.async(ctx, {
-        id: 0
+        storeid: 'home',
+        data: {
+          name: 'Home page'
+        }
       })
     }
   }
